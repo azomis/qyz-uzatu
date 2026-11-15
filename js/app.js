@@ -59,7 +59,7 @@
       cal_month: "Наурыз 2027",
       cal_add: "Күнтізбеге қосу",
       cal_google: "Google Calendar",
-      cal_ics: "Apple / Android (.ics)",
+      cal_ics: "Apple / Android",
       cal_event: "Қыз ұзату тойы",
       dress_title: "Түстер палитрасы",
       dress_text:
@@ -121,7 +121,7 @@
       cal_month: "Март 2027",
       cal_add: "Добавить в календарь",
       cal_google: "Google Calendar",
-      cal_ics: "Apple / Android (.ics)",
+      cal_ics: "Apple / Android",
       cal_event: "Торжество «Қыз ұзату»",
       dress_title: "Цветовая палитра",
       dress_text:
@@ -184,7 +184,7 @@
       cal_month: "March 2027",
       cal_add: "Add to calendar",
       cal_google: "Google Calendar",
-      cal_ics: "Apple / Android (.ics)",
+      cal_ics: "Apple / Android",
       cal_event: "Qyz Uzatu celebration",
       dress_title: "Colour palette",
       dress_text:
