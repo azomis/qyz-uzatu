@@ -136,7 +136,7 @@ body.opened .hero-card .mask>span{transform:none}
 .invite{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,70px);align-items:center}
 .invite h2{font:400 clamp(34px,6vw,60px)/1.05 var(--serif);margin:16px 0 20px;color:var(--wine)}
 .invite p.big{font:400 clamp(18px,2.2vw,22px)/1.65 var(--sans);color:var(--wine)}
-.hosts{margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+.hosts{margin-top:30px;padding-top:18px;padding-bottom:.35em;border-top:1px solid var(--line)}
 .hosts small{display:block;font:700 11px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--rasp);margin-bottom:6px}
 .hosts b{font:400 clamp(30px,5vw,46px)/1.15 var(--serif);color:var(--rasp);font-weight:400}
 .sh-wrap{width:min(100%,380px);aspect-ratio:1;margin-inline:auto;color:var(--olive)}
@@ -270,7 +270,7 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
   -webkit-mask:var(--band) repeat-x center center/auto 100%;mask:var(--band) repeat-x center center/auto 100%}
 .scard::before{top:14px}
 .scard::after{bottom:14px;transform:scaleY(-1)}
-.hosts b{font-size:clamp(42px,7vw,66px);line-height:1.1}
+.hosts b{font-size:clamp(42px,7vw,66px);line-height:1.3}
 .s-foot .big{font-size:clamp(62px,14vw,170px);line-height:1.05}
 .invite h2{font-size:clamp(48px,8.4vw,84px);line-height:1.1}
 .s-cd h2{font-size:clamp(42px,7.4vw,72px);line-height:1.1}
@@ -483,8 +483,13 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
   (function(){
     var st=document.querySelector('.stack');if(!st)return;
     var items=[].slice.call(st.querySelectorAll('.deck-h,.scard'));if(items.length<2)return;
-    function fit(){
-      var n=items.length,last=items[n-1];
+    var lastW=-1;
+    /* Runs only when the width changes (or text/fonts change) — never on the height-only 'resize' events that mobile
+       in-app browsers fire while their toolbars slide. The measurement resets and re-sets heights, which briefly
+       shortens the page: that clamps scrollTop, so the page could no longer be scrolled to the very bottom. */
+    function fit(force){
+      var w=st.offsetWidth;if(force!==true&&w===lastW)return;lastW=w;
+      var y=window.pageYOffset,n=items.length,last=items[n-1];
       items.forEach(function(e){e.style.marginTop='';e.style.marginBottom=''});
       /* all cards get the height of the tallest one */
       var cards=items.filter(function(e){return e.classList.contains('scard')}),mh=0;
@@ -499,10 +504,12 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
         el.style.marginBottom=(i===0?'calc(clamp(10px,2vh,20px) - clamp(18px,6vh,56px) + '+d+'px)':d+'px');
         pend=d;
       });
+      if(window.pageYOffset!==y)window.scrollTo({top:y,left:0,behavior:'instant'});
     }
-    fit();addEventListener('resize',fit);addEventListener('load',fit);
-    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
-    if(window.ResizeObserver){var ro=new ResizeObserver(fit);items.forEach(function(e){ro.observe(e)})}
+    function refit(){fit(true)}
+    fit(true);addEventListener('resize',function(){fit()});addEventListener('load',refit);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refit);
+    new MutationObserver(refit).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   })();
 
   /* hero scroll progress -> --p */
