@@ -208,7 +208,7 @@ body.opened .hero-card .mask>span{transform:none}
 }
 
 /* ---------- rsvp ---------- */
-.s-rsvp{background:linear-gradient(180deg,#fff 0,var(--mist-s) 28%,var(--moss-s) 55%,#a9ad7c 80%,var(--olive-s) 100%);padding:clamp(70px,11vh,120px) 18px}
+.s-rsvp{background:linear-gradient(180deg,#fff 0,var(--olive-s) 100%);padding:clamp(70px,11vh,120px) 18px}
 .rsvp-card{max-width:560px;margin:0 auto;background:var(--paper);border:0;box-shadow:0 30px 60px -34px rgba(122,90,78,.4),0 0 0 1px rgba(91,58,46,.05);border-radius:999px 999px 30px 30px/ 200px 200px 30px 30px;padding:clamp(70px,10vh,100px) clamp(24px,5vw,50px) clamp(30px,5vh,46px);text-align:center}
 .rsvp-card .ro{width:62px;aspect-ratio:1;margin:0 auto 10px;color:var(--rasp)}
 .rsvp-card h2{font:400 clamp(30px,5.4vw,46px)/1.08 var(--serif);margin-bottom:10px;font-weight:400}
@@ -228,7 +228,7 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
 .msg{min-height:24px;font-size:15px;font-weight:600;text-align:center}.msg.ok{color:#4f5530}.msg.err{color:#7d1f3a}
 
 /* ---------- footer ---------- */
-.s-foot{background:var(--olive-s);color:var(--ivory);text-align:center;min-height:var(--H,100svh);display:flex;flex-direction:column;justify-content:center;padding:clamp(70px,12vh,120px) 18px 40px;overflow:hidden}
+.s-foot{background:linear-gradient(180deg,var(--olive-s) 0,#4f5530 100%);color:var(--ivory);text-align:center;min-height:var(--H,100svh);display:flex;flex-direction:column;justify-content:center;padding:clamp(70px,12vh,120px) 18px 40px;overflow:hidden}
 .s-foot .bgro{width:min(300px,60vw);aspect-ratio:1;margin:0 auto 20px;color:var(--rose)}
 .s-foot .bgro .rosette{animation:spin 60s linear infinite}
 .s-foot .big{font:400 clamp(44px,10vw,120px)/1 var(--serif)}
@@ -279,7 +279,7 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
 .rsvp-card h2{font-size:clamp(44px,7.6vw,66px);line-height:1.1}
 .calbox h3{font-size:clamp(40px,5.8vw,58px);line-height:1.1}
 /* tumar amulet worn like a necklace: the thread runs off both sides of the screen, the amulet hangs from the middle and swings */
-.s-foot{--tw:min(120px,30vw);--th:clamp(64px,13vh,130px);justify-content:flex-start;padding-top:0;position:relative;box-shadow:0 -2px 0 var(--olive-s)} /* the shadow closes any sub-pixel seam above the footer (the section above ends in the same colour) */
+.s-foot{--tw:min(120px,30vw);--th:clamp(64px,13vh,130px);justify-content:flex-start;padding-top:0;position:relative;margin-top:-2px;box-shadow:0 -2px 0 var(--olive-s)} /* the shadow closes any sub-pixel seam above the footer (the section above ends in the same colour) */
 .hang{position:relative;margin:0 -18px clamp(14px,3vh,28px);height:calc(var(--th) + var(--tw)*2.18)}
 .chain{position:absolute;left:0;top:0;width:100%;height:var(--th);overflow:visible;fill:none;stroke:var(--rose);stroke-width:1.6;stroke-linecap:round}
 .knot{position:absolute;left:50%;top:var(--th);width:8px;height:8px;border-radius:50%;background:var(--rose);translate:-50% -50%;z-index:1}
@@ -461,7 +461,7 @@ form.sent>button.again{display:inline-flex;justify-self:center;margin-top:10px}
 
 </main>
 
-<script src="js/app.js?v=1794776300"></script>
+<script src="js/app.js?v=1794778651"></script>
 <script>
 (function(){
   var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
